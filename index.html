@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alexander Kalinowski | Research</title>
-  <meta name="description" content="Research portfolio, publications, and repositories for Your Name." />
+  <title>Alex Kalinowski | Research</title>
+  <meta name="description" content="Research portfolio, publications, and repositories for Alex Kalinowski." />
   <style>
     :root {
       --bg: #fbfaf7;
@@ -241,7 +241,7 @@
   <header>
     <div class="wrap">
       <nav aria-label="Primary navigation">
-        <a class="brand" href="#top">Your Name</a>
+        <a class="brand" href="#top">Alex Kalinowski</a>
         <div class="navlinks">
           <a href="#directions">Directions</a>
           <a href="#repositories">Repositories</a>
@@ -257,7 +257,7 @@
     <div class="wrap hero">
       <div>
         <span class="eyebrow">Current research interests</span>
-        <h1>Research at the intersection of geometry, representation, and model behavior.</h1>
+        <h1>The intersection of geometry, topology, representation, and model behavior.</h1>
         <p class="lead">
           Modern AI models are treated as an engineering-first problem: more data, more layers, more
             complexity in mechanisms, little understanding of what is going on under the hood.
@@ -265,7 +265,7 @@
             be measured, calibrated, and connected to decision-relevant model outcomes.
           To support this endeavor, I utilize mathematical tools (geometry, topology, optimal transport) to
             analyze the high-dimensional spaces generated through AI model training.
-          This research is distinct from now defunct approaches such as 'mechanistic interpretability', instead
+          This research is distinct from approaches such as 'mechanistic interpretability', instead
             focusing on mathematically grounded notions to measure robustness at scale.
           This page collects my current research directions, supporting repositories, publications, and
             earlier projects.
@@ -348,25 +348,29 @@
         <div class="section-head">
           <div>
             <h2>Repositories supporting these directions</h2>
-            <p class="section-note">Replace these placeholders with the repos that anchor each project. Include status, docs, and reproducibility notes.</p>
+            <p class="section-note">Monitoring Neural Training with Topology: A Footprint-Predictable Collapse Index</p>
           </div>
         </div>
         <div class="repo-list">
           <article class="repo">
             <div>
-              <h3><a href="https://github.com/YOUR-GITHUB-USERNAME/repo-name">repo-name</a></h3>
-              <p>Short description of the repository, the research direction it supports, and what someone can reproduce or extend from it.</p>
-              <div class="tagrow"><span class="tag">Python</span><span class="tag">experiments</span><span class="tag">reproducibility</span></div>
+              <h3><a href="https://github.com/akalino/mmhm">MMHM Engine</a></h3>
+              <p>A scratch build of a Morse-based Modular Homology Maintenance (MMHM) engine for streaming (incremental)
+                  topological analysis of large-scale evolving point clouds.</p>
+              <div class="tagrow"><span class="tag">topological scaling</span>
+                                  <span class="tag">online collapse index</span>
+                                  <span class="tag">neural training monitoring</span></div>
             </div>
             <span class="pill">active</span>
           </article>
           <article class="repo">
             <div>
-              <h3><a href="https://github.com/YOUR-GITHUB-USERNAME/repo-name">repo-name</a></h3>
-              <p>Short description of datasets, scripts, notebooks, or analysis pipelines included in this repository.</p>
-              <div class="tagrow"><span class="tag">analysis</span><span class="tag">notebooks</span></div>
+              <h3><a href="https://github.com/akalino/PH_Collapse_Detection">PH Collapse Detection</a></h3>
+              <p>Utilizing metrics generated from persistent homology to detect point cloud collapses.</p>
+              <div class="tagrow"><span class="tag">persistent homology</span>
+                                  <span class="tag">satistical calibration</span></div>
             </div>
-            <span class="pill">in progress</span>
+            <span class="pill">active</span>
           </article>
         </div>
       </div>
@@ -377,31 +381,34 @@
         <div class="section-head">
           <div>
             <h2>Publications</h2>
-            <p class="section-note">List papers in reverse chronological order. Add links to paper, arXiv, code, slides, and project pages where available.</p>
+            <p class="section-note">Publications (and pre-prints) listed in reverse chronological order.</p>
           </div>
         </div>
         <div class="pub-list">
           <article class="pub">
             <div>
-              <h3>Paper Title</h3>
-              <p><strong>Authors.</strong> Venue or preprint, year.</p>
-              <p>One-sentence summary of the contribution and why it matters.</p>
+              <h3>Monitoring Neural Training with Topology: A Footprint-Predictable Collapse Index</h3>
+              <p><strong>Alex Kalinowski.</strong> Preprint, 2026.</p>
+              <p>Persistent homology computations require generating a filtration for each point cloud in a
+                  sequence; this is inefficient when the cloud exhibits minor shifts and ignores information
+                  from a prior step in the sequence. A Modular Morse Homology Maintenance engine is used for
+                  online evolutions, coupled with a footprint-bound index that predicts collapse earlier than
+                  alternative methods.</p>
               <div class="tagrow">
-                <a class="tag" href="#">paper</a>
-                <a class="tag" href="#">code</a>
-                <a class="tag" href="#">project</a>
+                <a class="tag" href="#">https://arxiv.org/abs/2604.26984</a>
               </div>
             </div>
             <span class="pill">2026</span>
           </article>
           <article class="pub">
             <div>
-              <h3>Earlier Paper Title</h3>
-              <p><strong>Authors.</strong> Venue or preprint, year.</p>
-              <p>One-sentence summary of the result, method, or dataset.</p>
+              <h3>Calibrated Persistent Homology Tests for High-dimensional Collapse Detection</h3>
+              <p><strong>Alex Kalinowski.</strong> Computational Geometry Week, year.</p>
+              <p>Utilizing persistent homology metrics to detect point cloud collapse requires statistical
+                  calibration; we utilize this calibration to develop a mechanism map for where and when
+                  certain metrics shine.</p>
               <div class="tagrow">
-                <a class="tag" href="#">paper</a>
-                <a class="tag" href="#">code</a>
+                <a class="tag" href="#">https://arxiv.org/abs/2604.26068</a>
               </div>
             </div>
             <span class="pill">2025</span>
