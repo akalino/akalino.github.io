@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alexander Kalinowski | Research</title>
-  <meta name="description" content="Research portfolio, publications, and repositories for Alexander Kalinowski." />
+  <title>Alexander Kalinowski | Topology, Geometry &amp; AI</title>
+  <meta name="description" content="Alexander Kalinowski studies the geometry and topology of evolving AI representations, calibrated diagnostics, and hierarchical structure in language model safety." />
+  <meta name="theme-color" content="#fbfaf7" />
   <style>
     :root {
       --bg: #fbfaf7;
@@ -29,6 +30,19 @@
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+    .skip-link {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      z-index: 20;
+      padding: 8px 14px;
+      background: var(--card);
+      border-radius: 8px;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
 
     .wrap {
       width: min(var(--max), calc(100% - 32px));
@@ -88,7 +102,7 @@
     }
 
     h1, h2, h3 { line-height: 1.12; margin: 0; letter-spacing: -0.035em; }
-    h1 { font-size: clamp(2.4rem, 6vw, 5rem); }
+    h1 { font-size: clamp(2.4rem, 5vw, 4.25rem); }
     h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 16px; }
     h3 { font-size: 1.22rem; margin-bottom: 8px; }
 
@@ -98,6 +112,8 @@
       max-width: 760px;
       margin: 22px 0 0;
     }
+
+    .hero-detail { color: var(--muted); margin: 18px 0 0; font-size: 1.02rem; }
 
     .actions {
       display: flex;
@@ -132,13 +148,28 @@
       box-shadow: 0 18px 50px rgba(31, 35, 40, 0.08);
     }
 
-    .avatar {
-      width: 92px;
-      height: 92px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #dfe7ff, #fff3d8);
+    .portrait {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #dfe7ff;
       margin-bottom: 20px;
     }
+
+    .portrait img {
+      display: block;
+      position: absolute;
+      width: 180%;
+      max-width: none;
+      height: auto;
+      left: -40%;
+      top: -23%;
+    }
+
+    .profile-card h2 { font-size: 1.3rem; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .profile-card .meta + .meta { margin-top: 12px; }
 
     .meta {
       color: var(--muted);
@@ -146,7 +177,7 @@
       font-size: 0.98rem;
     }
 
-    section { padding: 54px 0; }
+    section { padding: 54px 0; scroll-margin-top: 84px; }
 
     .section-head {
       display: flex;
@@ -211,6 +242,8 @@
 
     .repo h3, .pub h3 { margin-bottom: 5px; }
     .repo p, .pub p { color: var(--muted); margin: 0; }
+    .pub p + p { margin-top: 10px; }
+    .pub .tagrow a { padding: 6px 10px; font-size: 0.82rem; }
 
     .pill {
       white-space: nowrap;
@@ -234,16 +267,31 @@
       .grid { grid-template-columns: 1fr; }
       .repo, .pub { grid-template-columns: 1fr; }
       .section-head { align-items: start; flex-direction: column; }
+      .profile-card { max-width: 420px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .navlinks { gap: 8px 16px; font-size: 0.9rem; }
+      .hero { padding: 40px 0; gap: 32px; }
+      .lead { font-size: 1.08rem; }
+      section { padding: 38px 0; scroll-margin-top: 146px; }
+      .profile-card { padding: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <header>
     <div class="wrap">
       <nav aria-label="Primary navigation">
         <a class="brand" href="#top">Alexander Kalinowski</a>
         <div class="navlinks">
-          <a href="#directions">Directions</a>
+          <a href="#directions">Research</a>
           <a href="#repositories">Repositories</a>
           <a href="#publications">Publications</a>
           <a href="#past-work">Past work</a>
@@ -253,22 +301,24 @@
     </div>
   </header>
 
-  <main id="top">
+  <main id="top" tabindex="-1">
     <div class="wrap hero">
       <div>
-        <span class="eyebrow">Current research interests</span>
-        <h1>The intersection of geometry, topology, representation, and model behavior.</h1>
+        <span class="eyebrow">Topology, geometry, and AI systems</span>
+        <h1>The geometry and topology of learned representations.</h1>
         <p class="lead">
-          Modern AI models are treated as an engineering-first problem: more data, more layers, more
-            complexity in mechanisms, little understanding of what is going on under the hood.
-          My work aims to understand the structure of learned representations, specifically how they can
-            be measured, calibrated, and connected to decision-relevant model outcomes.
-          To support this endeavor, I utilize mathematical tools (geometry, topology, optimal transport) to
-            analyze the high-dimensional spaces generated through AI model training.
-          This research is distinct from approaches such as 'mechanistic interpretability', instead
-            focusing on mathematically grounded notions to measure robustness at scale.
-          This page collects my current research directions, supporting repositories, publications, and
-            earlier projects.
+          I study how the structure of learned representations changes during training and fine-tuning,
+          and how those changes relate to model behavior.
+        </p>
+        <p class="hero-detail">
+          My work combines topological data analysis, statistical calibration, and efficient computation.
+          I am interested in which distinctions a model retains, how they relate across a label hierarchy,
+          and whether structural changes provide useful signals of behavioral deterioration.
+        </p>
+        <p class="hero-detail">
+          Current projects connect controlled point-cloud experiments with the evaluation of language
+          model representations and safety. Earlier work focused on optimal transport, knowledge graphs,
+          and the alignment of embedding spaces.
         </p>
         <div class="actions">
           <a class="button primary" href="#directions">Explore current work</a>
@@ -278,16 +328,17 @@
       </div>
 
       <aside class="profile-card" aria-label="Profile summary">
-        <div class="avatar" aria-hidden="true"></div>
-        <h3>Alexander Kalinowski</h3>
+        <div class="portrait">
+          <img src="assets/images/alexander-kalinowski.jpg" alt="Alexander Kalinowski outdoors at a running event"
+               width="1365" height="2048" decoding="async" fetchpriority="high" />
+        </div>
+        <h2>Alexander Kalinowski</h2>
         <p class="meta">Assistant Professor at SUNY Empire</p>
-        <p class="meta">Research interests: representation geometry, topology, calibration,
-            model evaluation, safety-relevant measurement.</p>
+        <p class="meta">Mathematical and computational methods for understanding evolving AI representations.</p>
         <div class="tagrow">
-          <span class="tag">LLM representations</span>
-          <span class="tag">Geometry</span>
-          <span class="tag">Evaluation</span>
-          <span class="tag">Safety</span>
+          <span class="tag">Topological data analysis</span>
+          <span class="tag">Representations</span>
+          <span class="tag">AI safety</span>
         </div>
       </aside>
     </div>
@@ -297,47 +348,48 @@
         <div class="section-head">
           <div>
             <h2>Current directions</h2>
-            <p class="section-note">Benchmarked datasets, optimization mechanisms, and model architectures
-            are the main drivers in current AI paradigms. These all contribute to a wealth of internal
-            representations that are mainly studied through post-hoc analyses that become academic research
-            papers but are not operationalized as interventions. My current research focus is in identifying
-            opportunities where models drift toward 'collapsed states', where the internal representations
-            lose richness in cluster structure, become highly anisotropic, and destroy topological features
-            that provide degrade important signals for downstream performance. This requires significant
-            statistical calibration to serve as an intervention mechanism in a low-latency way that balances
-            maintenance of these important structures with behavior-based outcomes.</p>
+            <p class="section-note">
+              Which relations in a representation remain recoverable as a model changes, and when does
+              that matter for behavior? I compare topological measurements with simpler spectral and
+              geometric diagnostics, test their reliability under controlled changes, and measure their
+              predictive value alongside their computational cost. Compression and structural change can
+              accompany useful learning as well as degradation; the distinction needs empirical evidence.
+            </p>
           </div>
         </div>
         <div class="grid">
           <article class="card">
-            <h3>Decision-relevant representation measurement</h3>
+            <h3>Calibrated structural diagnostics</h3>
             <p>
-              Developing calibrated geometric and topological measurements for learned representations,
-                with an emphasis on distinguishing meaningful structure from finite-sample artifacts.
+              Using controlled point-cloud interventions to compare spectral, geometric, and
+              persistent-homology diagnostics. The goal is to understand which changes each measurement
+              detects, how reliably it does so, and when topology adds useful information.
             </p>
             <div class="tagrow"><span class="tag">calibration</span>
-                               <span class="tag">null geometry</span>
-                               <span class="tag">metrics</span></div>
+                               <span class="tag">controlled benchmarks</span>
+                               <span class="tag">persistent homology</span></div>
           </article>
           <article class="card">
-            <h3>Fine-tuning trajectory monitoring</h3>
+            <h3>Hierarchical structure and safety</h3>
             <p>
-              Tracking whether collapse-like signals emerge, intensify, or disappear during fine-tuning and
-                safety-tuning, and relating those signals to model behavior.
+              Following fixed safety-taxonomy prompts through language model fine-tuning. Inclusion-induced
+              homology maps describe how child-category structure is retained in parents and domains;
+              behavioral evaluation tests whether changes in those relationships are safety-relevant.
             </p>
-            <div class="tagrow"><span class="tag">fine-tuning</span>
-                                <span class="tag">monitoring</span>
-                                <span class="tag">trajectories</span></div>
+            <div class="tagrow"><span class="tag">label hierarchies</span>
+                                <span class="tag">image persistence</span>
+                                <span class="tag">AI safety</span></div>
           </article>
           <article class="card">
-            <h3>Safety comparison and predictive validity</h3>
+            <h3>Efficient temporal monitoring</h3>
             <p>
-              Testing whether representation-level changes align with safety degradation, over-refusal,
-                jailbreak susceptibility, harmful compliance, or safety improvement.
+              Connecting representation motion to local topological updates, and studying the tradeoff
+              between monitoring cost and signal fidelity. I evaluate whether structural measurements
+              help anticipate later behavioral changes on independent training runs.
             </p>
-            <div class="tagrow"><span class="tag">safety</span>
-                                <span class="tag">validity</span>
-                                <span class="tag">benchmarks</span></div>
+            <div class="tagrow"><span class="tag">training trajectories</span>
+                                <span class="tag">incremental computation</span>
+                                <span class="tag">predictive validity</span></div>
           </article>
         </div>
       </div>
@@ -353,45 +405,47 @@
         <div class="repo-list">
           <article class="repo">
             <div>
-              <h3><a href="https://github.com/akalino/mmhm">MMHM Engine</a></h3>
-              <p>A scratch build of a Morse-based Modular Homology Maintenance (MMHM) engine for streaming (incremental)
-                  topological analysis of large-scale evolving point clouds.</p>
-              <div class="tagrow"><span class="tag">topological scaling</span>
-                                  <span class="tag">online collapse index</span>
-                                  <span class="tag">neural training monitoring</span></div>
+              <h3><a href="https://github.com/akalino/EvolveManifold">EvolveManifold</a></h3>
+              <p>A synthetic benchmark for controlled structural changes in high-dimensional point clouds.
+                  Checkpointed trajectories support comparisons of detector sensitivity, calibration,
+                  detection timing, and computational cost.</p>
+              <div class="tagrow"><span class="tag">point-cloud trajectories</span>
+                                  <span class="tag">spectral, geometric, and topological diagnostics</span></div>
             </div>
-            <span class="pill">active</span>
+            <span class="pill">benchmark</span>
+          </article>
+          <article class="repo">
+            <div>
+              <h3><a href="https://github.com/akalino/mmhm">MMHM monitoring</a></h3>
+              <p>A research implementation applying Modular Morse Homology Maintenance to evolving
+                  representation clouds. The experiments connect mover budgets with local updates,
+                  maintenance footprint, and structural monitoring signals.</p>
+              <div class="tagrow"><span class="tag">incremental homology</span>
+                                  <span class="tag">maintenance footprint</span>
+                                  <span class="tag">neural training</span></div>
+            </div>
+            <span class="pill">monitoring</span>
           </article>
           <article class="repo">
             <div>
               <h3><a href="https://github.com/akalino/PH_Collapse_Detection">PH Collapse Detection</a></h3>
-              <p>Utilizing metrics generated from persistent homology to detect point cloud collapses.</p>
+              <p>Calibrated persistent-homology tests evaluated across linear, nonlinear-support,
+                  and contamination mechanisms. Experiments compare filtration and statistic choices
+                  to understand their mechanism-dependent sensitivity.</p>
               <div class="tagrow"><span class="tag">persistent homology</span>
                                   <span class="tag">statistical calibration</span></div>
             </div>
-            <span class="pill">active</span>
+            <span class="pill">calibration</span>
           </article>
           <article class="repo">
             <div>
-              <h3><a href="https://github.com/akalino/EvolveManifold">Evolving Manifolds</a></h3>
-              <p>Generating synthetic point-clouds and applying "collapse trajectories" that are applied in
-                  an "evolution-like" process. This forces a variety of geometric collapses over time,
-                  providing checkpoints that can be loaded to apply statistical persistent homology
-                  metrics to.</p>
-              <div class="tagrow"><span class="tag">collapse trajectories</span>
-                                  <span class="tag">statistical calibration</span></div>
-            </div>
-            <span class="pill">active</span>
-          </article>
-          <article class="repo">
-            <div>
-              <h3><a href="https://github.com/akalino/TEA"</h3>Embedding Space Alignments</a></h3>
+              <h3><a href="https://github.com/akalino/TEA">Embedding space alignment</a></h3>
               <p>Using batched information guided optimal transport to align embedding spaces for the
                  purpose of integrating structured knowledge graphs into LLM architectures.</p>
               <div class="tagrow"><span class="tag">embedding alignment</span>
                                   <span class="tag">LLM knowledge integration</span></div>
             </div>
-            <span class="pill">published</span>
+            <span class="pill">alignment</span>
           </article>
         </div>
       </div>
@@ -402,37 +456,53 @@
         <div class="section-head">
           <div>
             <h2>Publications</h2>
-            <p class="section-note">Selected publications (and pre-prints) listed in reverse chronological order.
-            These publications represent work that was done for geometric, topological, and knowledge integration
-            algorithms over large point clouds, such as LLM and knowledge graph embedding spaces.
+            <p class="section-note">Selected papers, presentation abstracts, and preprints, listed by year.
+            Recent work studies structural change and monitoring in learned representations; earlier work
+            develops methods for embedding alignment and knowledge integration.
             </p>
           </div>
         </div>
         <div class="pub-list">
-          <article class="pub">
+          <article class="pub" id="pub-evolvemanifold">
             <div>
-              <h3>Monitoring Neural Training with Topology: A Footprint-Predictable Collapse Index</h3>
-              <p><strong>Alex Kalinowski.</strong> Preprint, 2026.</p>
-              <p>Persistent homology computations require generating a filtration for each point cloud in a
-                  sequence; this is inefficient when the cloud exhibits minor shifts and ignores information
-                  from a prior step in the sequence. A Modular Morse Homology Maintenance engine is used for
-                  online evolutions, coupled with a footprint-bound index that predicts collapse earlier than
-                  alternative methods.</p>
+              <h3>EvolveManifold: A Synthetic Benchmark for Monitoring Structural Change in High-Dimensional Point Clouds</h3>
+              <p><strong>Alexander Kalinowski.</strong> IEEE International Conference on Big Data, 2026.</p>
+              <p>A controlled benchmark of evolving point clouds for comparing spectral, geometric,
+                  and topological diagnostics. The evaluation examines mechanism-dependent sensitivity,
+                  benign-change controls, detection timing, and the fidelity of computational shortcuts.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://arxiv.org/abs/2604.26984</a>
+                <a class="tag" href="papers/evolvemanifold-2026.pdf">PDF</a>
+                <a class="tag" href="https://github.com/akalino/EvolveManifold">Code</a>
               </div>
             </div>
             <span class="pill">2026</span>
           </article>
-          <article class="pub">
+          <article class="pub" id="pub-footprint-monitoring">
+            <div>
+              <h3>Footprint-Predictable Topological Monitoring of Neural Training</h3>
+              <p><strong>Alexander Kalinowski.</strong> OPTINET Workshop, IEEE International Conference on Big Data, 2026.</p>
+              <p>An application of Modular Morse Homology Maintenance that translates point motion into
+                  budgeted local complex updates. Experiments in neural training relate mover budgets to
+                  maintenance footprint and examine retrospective associations with task performance.</p>
+              <div class="tagrow">
+                <a class="tag" href="papers/footprint-predictable-monitoring-2026.pdf">PDF</a>
+                <a class="tag" href="https://arxiv.org/abs/2604.26984">arXiv</a>
+                <a class="tag" href="https://github.com/akalino/mmhm">Code</a>
+              </div>
+            </div>
+            <span class="pill">2026</span>
+          </article>
+          <article class="pub" id="pub-calibrated-ph">
             <div>
               <h3>Calibrated Persistent Homology Tests for High-dimensional Collapse Detection</h3>
-              <p><strong>Alex Kalinowski.</strong> Computational Geometry Week, 2026.</p>
-              <p>Utilizing persistent homology metrics to detect point cloud collapse requires statistical
-                  calibration; we utilize this calibration to develop a mechanism map for where and when
-                  certain metrics shine.</p>
+              <p><strong>Alexander Kalinowski.</strong> CG:YRF, Computational Geometry Week, 2026. Presentation abstract.</p>
+              <p>Persistent-homology test statistics calibrated under non-collapsed reference models.
+                  A mechanism map compares total persistence and mean tail excess under Vietoris–Rips
+                  and distance-to-a-measure filtrations.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://arxiv.org/abs/2604.26068</a>
+                <a class="tag" href="papers/calibrated-ph-tests-2026.pdf">PDF</a>
+                <a class="tag" href="https://arxiv.org/abs/2604.26068">arXiv</a>
+                <a class="tag" href="https://github.com/akalino/PH_Collapse_Detection">Code</a>
               </div>
             </div>
             <span class="pill">2026</span>
@@ -447,7 +517,7 @@
                   introduces a sampling strategy (SLGS) that reduces the dependency on the entire line graph
                   while generating stronger supervision signals for use in Siamese neural networks.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/IJCNN_2024_LG_Sampling.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/IJCNN_2024_LG_Sampling.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2024</span>
@@ -461,7 +531,7 @@
               <p> Aligning knowledge graph embeddings with LLM embeddings for knowledge integration via a batched,
                   information guided optimal transport algorithm (BIG-OT) that scales to large point clouds.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/BIG_OT_IEEE_BigData_Draft.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/BIG_OT_IEEE_BigData_Draft.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2023</span>
@@ -476,7 +546,7 @@
                   saturation point where additional samples 'warp' the embedding space and lead to degraded performance
                   metrics.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/alex-csci-2022.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/alex-csci-2022.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2022</span>
@@ -490,7 +560,7 @@
               <p> Lead a team of undergraduate students in a knowledge base construction from pre-trained LLMs, using
                   semantic embedding matching to achieve second-best competition results.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/kbc-lm-2022-drexel.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/kbc-lm-2022-drexel.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2022</span>
@@ -503,7 +573,7 @@
               <p> Utilizing the Wasserstein distance to measure ontology embedding matchings for knowledge
                   integration tasks.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://arxiv.org/abs/2207.11324</a>
+                <a class="tag" href="https://arxiv.org/abs/2207.11324">arXiv</a>
               </div>
             </div>
             <span class="pill">2022</span>
@@ -518,7 +588,7 @@
                   pairwise similarities from pre-trained embedding models and a neural architecture to utilize
                   this information achieving SOTA results on predicate classifications tasks.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/IDSTA_IEEE_PTSS.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/IDSTA_IEEE_PTSS.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2022</span>
@@ -531,7 +601,7 @@
               <p> Analyzes the impact of predicate similarities in knowledge graph embedding spaces, demonstrating
                    that embedding models fail to capture semantic meaning.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/AIC-2022.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/AIC-2022.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2022</span>
@@ -544,7 +614,7 @@
               <p> An algorithm using an extension of the optimal transport Sinkhorn algorithm that respects
                   embedding structure of ontology class titles and descriptions.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/OTMapOnto-OAEI2021.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/OTMapOnto-OAEI2021.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2021</span>
@@ -557,7 +627,7 @@
               <p> A set of comprehensive clustering and network analyses targeting sentence and sub-sentence
                   embedding spaces.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/IDSTA2021_clustering-network-analyses-embedding-spaces.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/IDSTA2021_clustering-network-analyses-embedding-spaces.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2021</span>
@@ -571,11 +641,12 @@
                   embedded in close proximity sub-spaces, using that structure to align them to a knowledge
                   graphs.</p>
               <div class="tagrow">
-                <a class="tag" href="#">https://cci.drexel.edu/faculty/yan/publications/IJCNN2021_sent_sim_align.pdf</a>
+                <a class="tag" href="https://cci.drexel.edu/faculty/yan/publications/IJCNN2021_sent_sim_align.pdf">PDF</a>
               </div>
             </div>
             <span class="pill">2021</span>
           </article>
+        </div>
       </div>
     </section>
 
@@ -583,7 +654,7 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2>Past Work</h2>
+            <h2>Past work</h2>
             <p class="section-note">Past publications related to work in AI lecturing assistant design and AI/knowledge
                 graph models applied to metal organic frameworks (MOFs) that arise in organic chemistry.</p>
           </div>
@@ -615,8 +686,10 @@
         <div class="card">
           <h2>Contact</h2>
           <p>
-            For collaborations, questions, or feedback, reach me at
-            <a href="mailto:you@example.com">alexander.kalinowski@sunyempire.edu</a>. You can also find me on
+            I welcome conversations about topological data analysis, representation structure, and
+            careful evaluation of AI systems. Reach me at
+            <a href="mailto:alexander.kalinowski@sunyempire.edu">alexander.kalinowski@sunyempire.edu</a>.
+            You can also find me on
             <a href="https://github.com/akalino">GitHub</a>,
             <a href="https://scholar.google.com/citations?user=Dskp5AkAAAAJ&hl=en">Google Scholar</a>, and
             <a href="https://orcid.org/0000-0003-4961-628X">ORCID</a>.
